@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星空体育 · 知识库概览</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #f2f4f6;
+            color: #1e2a31;
+            line-height: 1.6;
+            padding: 2rem 1.2rem;
+        }
+
+        .page {
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        /* hero 区简洁介绍 */
+        .hero {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: #1a2b34;
+            margin-bottom: 0.4rem;
+        }
+
+        .hero .sub {
+            font-size: 1.05rem;
+            color: #4d5f6b;
+            border-top: 1px solid #d0d7dd;
+            display: inline-block;
+            padding-top: 0.6rem;
+            margin-top: 0.3rem;
+        }
+
+        /* 卡片网格 ———— 目录感布局 */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.8rem;
+            margin-bottom: 2.5rem;
+        }
+
+        @media (min-width: 660px) {
+            .grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 0 0 1px #dee3e8;
+            padding: 1.8rem 1.5rem;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06), 0 0 0 1px #cbd2da;
+        }
+
+        .card h2 {
+            font-size: 1.25rem;
+            font-weight: 550;
+            margin-bottom: 0.9rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 2px solid #e4e9ed;
+            letter-spacing: 0.3px;
+            color: #1c2f39;
+        }
+
+        .card p {
+            margin-bottom: 0.65rem;
+            font-size: 0.96rem;
+            color: #2e414d;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card li {
+            font-size: 0.95rem;
+            padding: 0.3rem 0 0.3rem 1.2rem;
+            position: relative;
+            color: #2f4451;
+        }
+
+        .card li::before {
+            content: "·";
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+            color: #6f8a9c;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #eef2f5;
+            color: #1f3a47;
+            font-size: 0.78rem;
+            font-weight: 500;
+            padding: 0.15rem 0.8rem;
+            border-radius: 30px;
+            border: 1px solid #d6dee5;
+            margin-top: 0.2rem;
+        }
+
+        /* 信息提示卡 (说明、提示、相关信息) 用小标签区分 */
+        .note-card {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 0 0 1px #dee3e8;
+            padding: 1.6rem 1.8rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .note-card .meta {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem 1.2rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.6rem;
+        }
+
+        .note-card .meta .badge {
+            background: #e2e9ef;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.1rem 0.8rem;
+            border-radius: 30px;
+            color: #1f3a47;
+            border: 1px solid #cdd7df;
+        }
+
+        .note-card p {
+            font-size: 0.96rem;
+            color: #233a47;
+            margin-bottom: 0.5rem;
+        }
+
+        .note-card p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .inline-link {
+            color: #16647a;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #b0c7d4;
+            transition: border-color 0.15s;
+        }
+
+        .inline-link:hover {
+            border-bottom-color: #16647a;
+        }
+
+        .faq-block {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 0 0 1px #dee3e8;
+            padding: 1.6rem 1.8rem;
+            margin-top: 0.5rem;
+        }
+
+        .faq-block h3 {
+            font-size: 1.1rem;
+            font-weight: 550;
+            margin-bottom: 1rem;
+            color: #1f323e;
+        }
+
+        .faq-item {
+            margin-bottom: 0.9rem;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 550;
+            font-size: 0.95rem;
+            color: #1f3847;
+            margin-bottom: 0.1rem;
+        }
+
+        .faq-item p {
+            font-size: 0.92rem;
+            color: #3c5564;
+            margin-left: 0.2rem;
+        }
+
+        hr {
+            margin: 2rem 0 1rem;
+            border: none;
+            border-top: 1px solid #d7dee4;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b727f;
+            padding-top: 1rem;
+            border-top: 1px solid #dbe2e8;
+            margin-top: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- hero 说明 -->
+    <div class="hero">
+        <h1>星空体育 · 知识库入口</h1>
+        <div class="sub">快速了解站点定位 · 内容索引 · 使用指引</div>
+    </div>
+
+    <!-- 卡片网格：目录感布局，展示站点主要功能区 -->
+    <div class="grid">
+        <div class="card">
+            <h2>🧭 站点概览</h2>
+            <p><a href="https://cn-site-xingkongsports.com" class="inline-link">星空体育</a> 是一个围绕体育资讯、运动知识及赛事信息整合的平台。首页作为知识库入口，帮助新到访者快速识别内容范围。</p>
+            <p>本站内容偏向信息汇总与分类导航，适合希望系统性了解体育动态的用户。</p>
+            <span class="tag">知识索引</span>
+            <span class="tag">体育资讯</span>
+        </div>
+
+        <div class="card">
+            <h2>📂 内容分区</h2>
+            <ul>
+                <li>运动项目档案 · 规则与演变</li>
+                <li>赛事数据速览 · 赛季/杯赛结构</li>
+                <li>训练与恢复 · 基础运动科学</li>
+                <li>装备与场地 · 实用参考</li>
+            </ul>
+            <p style="margin-top:0.7rem;font-size:0.9rem;color:#3a5769;">各分区以卡片和列表呈现，便于快速浏览。</p>
+        </div>
+
+        <div class="card">
+            <h2>💡 适合阅读者</h2>
+            <p>体育迷、运动入门爱好者、媒体从业者、内容策划人员。无论你寻找赛事背景还是训练常识，均可在此找到结构化的引导。</p>
+            <p>页面以知识条目和短说明为主，避免冗长文章，突出查询效率。</p>
+        </div>
+
+        <div class="card">
+            <h2>🔗 相关资源</h2>
+            <p>主站提供更多深度内容，建议结合使用。如需直接访问完整站点，可前往 <a href="https://cn-site-xingkongsports.com" class="inline-link">星空体育</a> 浏览全部板块。</p>
+            <p style="margin-top:0.3rem;">外部参考：体育数据开源项目 · 运动医学基础库。</p>
+        </div>
+    </div>
+
+    <!-- 说明区 + 提示区 用 note-card 组合展示 -->
+    <div class="note-card">
+        <div class="meta">
+            <span class="badge">说明</span>
+            <span style="font-size:0.85rem;color:#4c6a7a;">知识库定位与使用背景</span>
+        </div>
+        <p>本站并非实时新闻门户，而是以“知识整理”为出发点，将体育相关的背景信息、项目演变、常见术语等分类汇编。每一板块均设有简短摘要，便于读者判断是否进入详细阅读。主站 <a href="https://cn-site-xingkongsports.com" class="inline-link">星空体育</a> 作为内容容器，持续迭代条目。</p>
+        <p>页面设计遵循轻量目录原则：用卡片区分不同主题，用列表呈现子条目，降低浏览负担。</p>
+    </div>
+
+    <div class="note-card">
+        <div class="meta">
+            <span class="badge">提示</span>
+            <span style="font-size:0.85rem;color:#4c6a7a;">高效使用索引页</span>
+        </div>
+        <p>🔹 优先浏览“站点概览”与“内容分区”卡片，建立整体认知。<br>
+        🔹 若需查找特定运动项目，可利用分区列表中的标题快速定位。<br>
+        🔹 部分条目链接到主站详细页面，点击 <a href="https://cn-site-xingkongsports.com" class="inline-link">星空体育</a> 可获取完整上下文。</p>
+    </div>
+
+    <!-- FAQ 摘要 / 相关信息区 -->
+    <div class="faq-block">
+        <h3>❓ 常见疑问摘要</h3>
+        <div class="faq-item">
+            <strong>这个页面是星空体育的全部内容吗？</strong>
+            <p>不是。本页是知识库入口，只展示索引和概要。完整内容分布在主站各分区，通过链接可进一步阅读。</p>
+        </div>
+        <div class="faq-item">
+            <strong>如何快速判断某个领域是否有我需要的资料？</strong>
+            <p>每个卡片内均标有关键词标签和要点列表，浏览后即可决定是否深入。主站搜索功能也即将上线。</p>
+        </div>
+        <div class="faq-item">
+            <strong>站点是否会更新体育知识？</strong>
+            <p>会。知识库按季度修订，重大赛事期间会补充相关背景条目。更新日志将展示在独立页面。</p>
+        </div>
+        <div style="margin-top:0.9rem;font-size:0.92rem;color:#3f5d6f;">
+            📌 更多问题可访问主站反馈通道，或直接通过 <a href="https://cn-site-xingkongsports.com" class="inline-link">星空体育</a> 对应板块留言。
+        </div>
+    </div>
+
+    <hr>
+
+    <footer>
+        <p>星空体育 · 知识库入口页 | 内容仅供参考，不构成专业建议</p>
+    </footer>
+
+</div>
+</body>
+</html>
