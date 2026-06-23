@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星空体育 · 功能介绍与快速索引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background: linear-gradient(145deg, #f7e9d7 0%, #fce4c8 40%, #fbddb5 80%, #f3cf9e 100%);
+            min-height: 100vh;
+            padding: 2rem 1.2rem;
+            color: #3e2e1c;
+            line-height: 1.6;
+        }
+
+        .page {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        /* 头部区域：精简导览感 */
+        .hero {
+            background: rgba(255, 248, 235, 0.7);
+            backdrop-filter: blur(6px);
+            border-radius: 40px 40px 24px 24px;
+            padding: 2.5rem 2rem 2.2rem;
+            margin-bottom: 2.8rem;
+            box-shadow: 0 12px 28px rgba(120, 70, 30, 0.10);
+            border: 1px solid rgba(255, 215, 165, 0.3);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #5a3a1e;
+        }
+
+        .hero .sub {
+            display: inline-block;
+            margin-top: 0.6rem;
+            padding: 0.3rem 1.8rem;
+            background: #d9b382;
+            color: #2d1e0f;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            backdrop-filter: blur(4px);
+            box-shadow: inset 0 0 0 1px rgba(255, 225, 190, 0.6);
+        }
+
+        .hero p {
+            margin-top: 1.2rem;
+            max-width: 620px;
+            margin-left: auto;
+            margin-right: auto;
+            background: rgba(255, 240, 220, 0.5);
+            padding: 0.8rem 1.2rem;
+            border-radius: 60px;
+            font-size: 1rem;
+            color: #3d2c18;
+        }
+
+        /* 卡片网格 —— 目录感布局 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 2.8rem;
+        }
+
+        .card {
+            background: #ffffffea;
+            backdrop-filter: blur(2px);
+            border-radius: 32px;
+            padding: 1.8rem 1.6rem 2rem;
+            box-shadow: 0 10px 24px rgba(110, 70, 30, 0.08);
+            transition: all 0.2s ease;
+            border: 1px solid rgba(250, 210, 160, 0.5);
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 32px rgba(140, 80, 30, 0.12);
+            border-color: #e3b384;
+        }
+
+        .card .icon {
+            display: inline-block;
+            font-size: 2rem;
+            margin-bottom: 0.6rem;
+            background: #f1dcc6;
+            width: 48px;
+            height: 48px;
+            line-height: 48px;
+            text-align: center;
+            border-radius: 20px;
+            color: #5a3a1e;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #3a2816;
+            letter-spacing: 0.5px;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #4f3b25;
+            margin-bottom: 1.2rem;
+        }
+
+        .card .badge-link {
+            display: inline-block;
+            background: #f5e1ca;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #3b2a16;
+            box-shadow: inset 0 0 0 1px #ffe1b5;
+            transition: 0.15s;
+            text-decoration: none;
+        }
+
+        .card .badge-link:hover {
+            background: #eacbad;
+            color: #1f150a;
+        }
+
+        /* 说明区 + 提示区并排 */
+        .info-split {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin-bottom: 2.8rem;
+        }
+
+        .info-box {
+            flex: 1 1 280px;
+            background: rgba(255, 246, 235, 0.75);
+            backdrop-filter: blur(4px);
+            border-radius: 28px;
+            padding: 1.8rem 2rem;
+            border: 1px solid #f0cfb0;
+            box-shadow: 0 6px 14px rgba(100, 60, 20, 0.04);
+        }
+
+        .info-box h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            color: #4a311c;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-box p {
+            font-size: 0.95rem;
+            color: #3d2c18;
+            margin-bottom: 0.8rem;
+        }
+
+        .info-box .tiny-tag {
+            background: #dbbd9c;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: #1d140b;
+            display: inline-block;
+            margin-right: 0.3rem;
+        }
+
+        /* 提示区内部微样式 */
+        .tip-em {
+            background: #ffe6d3;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            display: inline-block;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        /* FAQ 摘要区 */
+        .faq-mini {
+            background: rgba(255, 242, 225, 0.6);
+            backdrop-filter: blur(3px);
+            border-radius: 36px;
+            padding: 2rem 2rem 2.2rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid #e8c7a4;
+        }
+
+        .faq-mini h3 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #432e19;
+            margin-bottom: 1.2rem;
+            letter-spacing: 0.5px;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-bottom: 1px dashed #dbbd9e;
+            padding-bottom: 0.8rem;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            color: #3f2b16;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-item p {
+            font-size: 0.95rem;
+            color: #4b3621;
+            margin: 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        /* 相关信息区 */
+        .related-links {
+            background: #ffffffd9;
+            border-radius: 40px;
+            padding: 1.8rem 2rem;
+            border: 1px solid #ebcfb0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .related-links span {
+            font-weight: 500;
+            color: #3c2a17;
+        }
+
+        .related-links .link-pill {
+            display: inline-block;
+            background: #f2dbc4;
+            padding: 0.3rem 1.4rem;
+            border-radius: 40px;
+            text-decoration: none;
+            color: #2b1d0e;
+            font-weight: 500;
+            font-size: 0.95rem;
+            border: 1px solid #e2c09b;
+            transition: 0.15s;
+        }
+
+        .related-links .link-pill:hover {
+            background: #e6c7a6;
+            border-color: #ceaa81;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5d482f;
+            padding: 1.5rem 0 0.2rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero {
+                padding: 1.6rem 1rem;
+            }
+            .card-grid {
+                gap: 1.2rem;
+            }
+            .card {
+                padding: 1.4rem;
+            }
+            .faq-mini {
+                padding: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- hero 区：快速识别网站用途 -->
+    <div class="hero">
+        <h1>⭐ 星空体育</h1>
+        <div class="sub">知识库 · 快速索引</div>
+        <p>一站式了解平台定位、适用场景与常见疑问，方便您快速判断是否符合需求。</p>
+    </div>
+
+    <!-- 卡片目录区：四项核心模块 -->
+    <div class="card-grid">
+        <div class="card">
+            <div class="icon">📋</div>
+            <h3>平台概述</h3>
+            <p>星空体育面向运动爱好者和信息浏览用户，提供体育资讯、动态汇总及内容聚合服务。界面简洁直观，降低查找成本。</p>
+            <a class="badge-link" href="https://cn-wap-xingkongsports.com">星空体育</a>
+        </div>
+        <div class="card">
+            <div class="icon">🧩</div>
+            <h3>功能特点</h3>
+            <p>移动端优先，浏览顺畅；频道划分清晰；实时更新赛果与新闻。无需下载额外应用，浏览器即开即用。</p>
+            <span class="badge-link">适配手机 & 平板</span>
+        </div>
+        <div class="card">
+            <div class="icon">🏟️</div>
+            <h3>适用场景</h3>
+            <p>通勤时快速浏览赛事看点，午休翻阅热门体育话题，晚间追踪联赛动态。适合日常轻量信息获取。</p>
+            <span class="badge-link">日常 · 资讯</span>
+        </div>
+        <div class="card">
+            <div class="icon">🔍</div>
+            <h3>信息结构</h3>
+            <p>按运动项目、联赛、热度等维度组织内容，并提供搜索与分类筛选，帮助用户更快定位感兴趣的信息。</p>
+            <span class="badge-link">分类导航</span>
+        </div>
+    </div>
+
+    <!-- 说明区 + 提示区 (左右自适应) -->
+    <div class="info-split">
+        <div class="info-box">
+            <h4>📌 说明</h4>
+            <p><span class="tiny-tag">内容来源</span> 平台整合公开体育新闻与数据，保持信息时效性。所有内容仅供浏览参考，不构成任何专业建议。</p>
+            <p><span class="tiny-tag">使用提醒</span> 建议在良好的网络环境下访问，以获得完整排版体验。部分功能模块可能因设备差异略有不同。</p>
+        </div>
+        <div class="info-box">
+            <h4>💡 提示</h4>
+            <p>如果您想直接浏览主站内容，可以点击下方卡片中的 <span class="tip-em">星空体育</span> 链接，或在浏览器中手动输入域名。</p>
+            <p style="margin-top: 0.6rem;">🔹 首页默认展示热门推荐，您也可以使用顶部导航切换频道。</p>
+            <p>🔹 想了解特定赛事？试试站内搜索框（如果可用）。</p>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要区: 三个常见疑问 -->
+    <div class="faq-mini">
+        <h3>❓ 常见疑问速览</h3>
+        <div class="faq-item">
+            <strong>星空体育主要提供哪些内容？</strong>
+            <p>平台以体育资讯、比分更新、赛事前瞻与回顾为主，覆盖足球、篮球、网球等多个主流项目。信息排列偏资讯流风格。</p>
+        </div>
+        <div class="faq-item">
+            <strong>是否需要注册或下载？</strong>
+            <p>一般情况下，浏览公开内容无需注册。不过部分个性化功能（如收藏、评论）可能需要登录。平台不强制下载客户端。</p>
+        </div>
+        <div class="faq-item">
+            <strong>信息更新频率如何？</strong>
+            <p>对战比分与关键新闻保持实时或准实时刷新；深度文章按赛事节奏发布。具体以页面实际显示为准。</p>
+        </div>
+    </div>
+
+    <!-- 相关信息区：轻量链接与说明 -->
+    <div class="related-links">
+        <span>🔗 相关信息</span>
+        <a class="link-pill" href="https://cn-wap-xingkongsports.com">星空体育</a>
+        <span style="color: #5d4a32;">|</span>
+        <span style="font-size: 0.9rem;">📡 移动端适配 · 内容聚合</span>
+    </div>
+
+    <!-- 页脚安静提示 -->
+    <div class="footer-note">
+        本页为介绍索引页 · 功能与内容以实际站点为准
+    </div>
+
+</div>
+</body>
+</html>
